@@ -1,0 +1,33 @@
+[build]
+  command = "npm run build:frontend"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev"
+  port = 5173
+
+# Redirecionar requisições de API para o backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://seu-backend-url.com/api/:splat"
+  status = 200
+  force = false
+
+# Headers CORS
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, Accept"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# SPA Fallback para React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
