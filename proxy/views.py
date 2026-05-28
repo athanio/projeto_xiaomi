@@ -158,9 +158,9 @@ async def chat(
         Field(
          default="",
          description="Digite sua pergunta para IA",
-         example="Qual a capital do Brasil?",
+         example="Qual a capital da Noroega?",
          json_schema_extra={
-            "placeholder": "Qual a capital do Brasil?"
+            "placeholder": "Qual a capital do Noroega?"
         }
     )
     ] = Form(...)
